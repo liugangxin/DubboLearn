@@ -13,5 +13,6 @@
 		<!-- <context:exclude-filter type="regex" expression="com.liu.service.*" /> -->
 	</context:component-scan>
 	<aop:aspectj-autoproxy/>
-	<import resource="provider.xml"/>
+	<!-- <import resource="provider.xml"/> -->
+	<import resource="provider-test2.xml"/>
 </beans>

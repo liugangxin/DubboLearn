@@ -16,13 +16,15 @@ public class Consumer {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "consumer.xml" });
 		context.start();
 		doThing(context);
-		/*doThing2(context);
-		doThing2(context);
-		doThing2(context);
-		doThing2(context);*/
+//		testCallback(context);
+		/*while(true){
+			Thread.sleep(1000);
+		}*/
 	}
 
-	private static void doThing2(ClassPathXmlApplicationContext context) {
+	// 参数回调,其中key为任意，查看provider的回调实现类
+	//如果想简单些，则服务端不用实现，直接在方法执行时，调用自定义CallbackListener接口对象方法即可
+	private static void testCallback(ClassPathXmlApplicationContext context) {
 		CallbackService callbackService = (CallbackService) context.getBean("callbackService");
 		callbackService.addListener("http://127.0.0.1/dubbo/foo.bar", new CallbackListener() {
 			public void changed(String msg) {
